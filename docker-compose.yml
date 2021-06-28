@@ -1,0 +1,21 @@
+version: "3.7"
+
+services:
+  jenkins:
+    image: cleondock/jenkins:1
+    networks:
+      - proxy
+    volumes:
+      - jenkins-volume:/var/jenkins_home/ 
+      - /var/run/docker.sock:/var/run/docker.sock
+    #healthcheck:
+    #  test: [ "CMD",  "curl", "-f", "http://admin:password@localhost:8080/api/json || exit 1" ]
+    #  interval: 1m 
+    #  timeout: 3s
+       
+volumes:
+  jenkins-volume:
+
+networks:
+  proxy:
+    external: true
