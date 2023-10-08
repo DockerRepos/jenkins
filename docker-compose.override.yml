@@ -1,0 +1,4 @@
+services:
+  jenkins:
+    ports:
+      - 8280:8080

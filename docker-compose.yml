@@ -2,7 +2,8 @@ version: "3.7"
 
 services:
   jenkins:
-    image: cleondock/jenkins:1
+    #image: cleondock/jenkins:1
+    build: .
     networks:
       - proxy
     volumes:
