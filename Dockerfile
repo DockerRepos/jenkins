@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:2.277.4-lts-jdk11
+FROM jenkins/jenkins:2.462.3-jdk17
 USER root
 RUN apt-get update && apt-get install -y apt-transport-https \
        ca-certificates curl gnupg2 \
@@ -10,5 +10,5 @@ RUN add-apt-repository \
        $(lsb_release -cs) stable"
 RUN apt-get update && apt-get install -y docker-ce-cli
 USER jenkins
-RUN jenkins-plugin-cli --plugins "blueocean:1.24.6 docker-workflow:1.26"
+RUN jenkins-plugin-cli --plugins 'blueocean docker-workflow gitlab-plugin token-macro cloudbees-folder'
 #HEALTHCHECK --interval=1m --timeout=3s CMD curl -f http://admin:password@172.17.0.3:8080/api/json || exit 1 
